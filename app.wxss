@@ -1,0 +1,4 @@
+/**app.wxss**/
+@import 'imp/styles/weui.wxss';
+@import 'imp/styles/prompt.wxss';
+@import 'imp/styles/skyvow.wxss';

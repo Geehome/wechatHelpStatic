@@ -1,0 +1,17 @@
+<view class="page__hd">
+        <view class="page__title">我的提问</view>
+
+</view>
+<view>
+  <view class="weui-cell weui-cell_example" wx:for="{{questionList}}" wx:key="{{item}}" bindtap="navigateTo" data-qid="{{item.qid}}">
+    <view class="weui-cell__hd">
+      <image src="{{icon[0]}}" style="width:20px; height: 20px;margin-right:16px; display:block" wx-if="{{item.status==1}}"></image>
+      <image src="{{icon[1]}}" style="width:20px;height: 20px;margin-right:16px; display:block" wx-if="{{item.status==0}}"></image>
+    </view>
+    <div class="weui-cell__bd" style="width:210px; overflow:hidden;">
+      <p>{{item.title}}</p>
+    </div>
+    <div class="weui-cell__ft" style="font-size:10px;" wx-if="{{item.status==1}}">已解决\t\t</div>
+    <div class="weui-cell__ft" style="font-size:10px;">{{item.qtime}}</div>
+  </view>
+</view>

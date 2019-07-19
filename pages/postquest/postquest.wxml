@@ -1,0 +1,27 @@
+<!--pages/postquest/postquest.wxml-->
+<form bindsubmit="submitForm">
+    <div class="weui-cells__title">问题标题</div>
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <input class="weui-input" maxlength="45" type="text" bindinput="title" placeholder="描述不得超过45字"/><div class="weui-textarea-counter"><span>{{titlenum}}</span>/45</div>
+        </div>
+    </div>
+</div>
+
+<div class="weui-cells__title">问题详细描述</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="描述不得超过200字" maxlength="200" rows="3" bindinput="descrip"></textarea>
+            <div class="weui-textarea-counter"><span>{{descripnum}}</span>/200</div>
+        </div>
+    </div>
+</div>
+   
+    <view class="button-sp-area">
+        <button class="weui-btn weui-btn_mini weui-btn_default"  formType="submit">发布</button>
+    </view>
+</form>
+
+

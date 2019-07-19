@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/register/register",
+    "pages/main/iblog",
+    "pages/postquest/postquest",
+    "pages/questionPage/questionPage",
+    "pages/square/square",
+    "pages/myQuestion/myQuestion",
+    "pages/myReply/myReply",
+    "pages/replyMe/replyMe"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTitleText": "医疗互助",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "gray",
+    "selectedColor": "blue",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "height": "51px",
+    "list": [
+      {
+        "pagePath": "pages/square/square",
+        "text": "首页",
+        "iconPath": "pages/img/icon-square.png",
+        "selectedIconPath": "pages/img/icon-square-selected.png"
+      },
+      {
+        "pagePath": "pages/main/iblog",
+        "text": "我的",
+        "iconPath": "pages/img/icon-setting.png",
+        "selectedIconPath": "pages/img/icon-setting-selected.png"
+        
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

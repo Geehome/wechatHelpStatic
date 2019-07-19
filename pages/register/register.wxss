@@ -1,0 +1,27 @@
+.textstyle {
+  font-size: 25rpx;
+}
+.picker1{
+  border: 1rpx solid gray;
+    border-radius: 15rpx;
+  width: 300rpx;
+}
+.view1{
+ margin-top: 300rpx;
+ margin-bottom: 300rpx;
+ margin-left: 100rpx;
+ margin-right: 100rpx;
+}
+.button{
+  width: 300rpx;
+  height: 100rpx;
+}
+.input1{
+  border: 1rpx solid gray;
+  border-radius: 15rpx;
+  width: 300rpx;
+  font-size: 25rpx;
+  outline: none;
+  
+  
+}

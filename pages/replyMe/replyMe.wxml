@@ -1,0 +1,8 @@
+<!--pages/replyMe/replyMe.wxml-->
+<view class="page__hd">
+        <view class="page__title">回复我的\n</view>
+            <view class="weui-cell__hd" wx:for="{{answers}}" wx:key="{{item}}" data-qid="{{item.qid}}" bindtap="navigateTo">
+                <view class="weui-media-box__title " style="color:green;">我的提问：{{item.title}}\n</view>
+                <view class="weui-cell" wx:for="{{item.answers}}" wx:key="{{item}}">{{item.index}}{{item.answer}}</view>
+            </view>
+</view>

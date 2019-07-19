@@ -1,0 +1,95 @@
+<view>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"  height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view>
+  <form catchsubmit="formSubmit" catchreset="formReset" id="search-form">
+    <view class="search-pancel">
+      <input value="" id="search-input" name="input" confirm-type="search" class="search-input" placeholder="搜索你感兴趣的内容..." bindconfirm="formSubmit" bindfocus="inputfocus" bindblur="inputblur"></input>
+      <button class="search-button" form-type="submit" size="mini" plain="true">
+        <icon type="search" color="#959595" size="12" />
+      </button>
+    </view>
+  </form>
+  <view class="search-block1">
+    <block wx:if="{{result.length > 0 && resultVisi}}">
+      <block wx:for="{{result}}" wx:key="key">
+        <view class="item">
+          <image src='../img/square/search.jpg' class='soso'></image>
+          <text class="search-block"> {{item}}</text>
+        </view>
+      </block>
+    </block>
+  </view>
+
+  <view class="top-Nav">
+    <block wx:for="{{topNav}}" wx:key="id">
+      <view class="top-item" catchtap="onNavRedirect" id="{{item.id}}" data-redicttype="{{item.redirecttype}}" data-url="{{item.url}}" data-appid="{{item.appid}}" data-extraData="{{item.extraData}}">
+        <view>
+          <image src="{{item.image}}" class="topNav-image"></image>
+        </view>
+        <view>
+          <text style="font-size:27rpx; font-family:微软雅黑">{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class='top-Nav2'>
+    <navigator url='../hot/hot' hover-class='none'>
+      <view class="top-Nav2-item">
+        <view class="top-Nav2-item-word">
+          <text>热门问题</text>
+        </view>
+      </view>
+    </navigator>
+
+
+    <navigator url="../../pages/list/list?categoryID=1059" hover-class='none'>
+      <view class="top-Nav2-item2">
+        <view class="top-Nav2-item-word">
+          <text>口腔小常识</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="container">
+    <!-- 加载图文列表 -->
+    <view class="index-container">
+      <view class="common-list">
+        <block wx:key="id" wx:for="{{postsList}}">
+          <view class="list-item has-img" index="{{index}}" id="{{item.id}}" bindtap="redictDetail">
+            <view class="content-title">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="content-date">
+              <image src="../img/calendar.png"></image>
+              <text>{{item.date}}</text>
+              <image src="../img/comments.png"></image>
+              <text class="">{{item.total_comments}}</text>
+              <image src="../img/pageviews.png"></image>
+              <text class="">{{item.pageviews}}</text>
+              <image src="../img/home-like.png"></image>
+              <text class="">{{item.like_count}}</text>
+            </view>
+            <image src="{{item.post_medium_image}}" mode="aspectFill" class="cover"></image>
+          </view>
+        </block>
+      </view>
+
+      <view class="loadingmore" style="display:{{floatDisplay}}">
+
+        <view class="no-more" hidden="{{!isLastPage}}">---无更多文章---</view>
+      </view>
+      <view class="copyright" style="display:{{floatDisplay}}">
+      </view>
+    </view>
+  </view>
+
+</view>

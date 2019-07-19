@@ -1,0 +1,14 @@
+<view class="page__hd">
+        <view class="page__title">我的回答</view>
+
+</view>
+<view>
+  <view class="weui-cell weui-cell_example" wx:for="{{answers}}" wx:key="{{item}}" bindtap="navigateTo" data-qid="{{item.qid}}">
+    <view class="weui-cell__hd">
+    </view>
+    <div class="weui-cell__bd" style="width:210px; overflow:hidden;">
+      <p>{{item.answer}}</p>
+    </div>
+    <div class="weui-cell__ft" style="font-size:10px;">{{item.atime}}</div>
+  </view>
+</view>

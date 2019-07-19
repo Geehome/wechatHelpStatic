@@ -1,0 +1,16 @@
+<view class="view1">
+<div>
+<text class="textstyle">{{moto1}}</text>
+<input class="input1" type = "text" bindinput="telInput" placeholder="请输入正确号码"></input>
+
+</div>
+<div>
+<text class="textstyle">{{moto2}}</text>
+      <picker class = "picker1"  value="{{index}}" range="{{ageNum}}"  bindchange="ageInput"  >
+        <view class="picker">
+        <text class="textstyle">{{ageNum[index]}}</text>
+        </view>
+      </picker>
+</div>
+</view>
+<button type="primary" class="button" bindtap="doRegist">注册</button>
