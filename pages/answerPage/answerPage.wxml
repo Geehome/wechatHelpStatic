@@ -1,0 +1,39 @@
+<view>
+  <view style="background-color:#fff;padding:10rpx" bindtap="backToQustion">
+    <view style="font-family:黑体;font-size:18px;font-weight:bold; margin-bottom:10px;margin-left:6rpx">
+      {{question.title}}
+    </view>
+    <view class="weui-msg__desc" style="font-size:12px;margin-left:6rpx">
+      查看全部{{question.reply_sum}}个回答 >
+    </view>
+  </view>
+  <view style="margin-top:10px;background-color:#fff;padding:10rpx;">
+    <image src="../img/userimg.png" class="user-img" style="background-color:#fff; margin-left:6rpx "></image>
+    <div style="font-family:黑体;font-size:15px;font-weight:bold;margin-left:14rpx;vertical-align:middle; margin-top:2rpx">{{relpy_user_name}}</div>
+    <div class="follow_button">
+      <text class="text">+ 关注</text>
+    </div>
+  </view>
+  <view style="margin-top:4rpx;background-color:#fff; height:100%;padding:10rpx;">
+    <view style="margin-left:20rpx">
+      {{answer.answer}}
+    </view>
+    <view class="weui-msg__desc" style="font-size:12px;margin-left:20rpx;margin-top:30rpx">
+      作者最后编辑于 {{answer.time}}
+    </view>
+  </view>
+  <view style="position: fixed; bottom:0;margin-top:1rpx;background-color:#fff;width:100%; display:flex">
+    <div class="icontext1" bindtap="like">
+      <image src="../img/home-like.png" class="subicon"></image>
+        <text class="subtext">感谢 {{answer.like_sum}}</text>
+    </div>
+    <div class="icontext1">
+    <image src="../img/pageviews.png" class="subicon"></image>
+    <text class="subtext">浏览次 {{answer.ans_pv}}</text>
+    </div>
+    <div class="icontext2" bindtap="comment">
+      <image src="../img/comments.png" class="subicon"></image>
+      <text class="subtext">评论{{answer.ans_reply_sum}}</text>
+    </div>
+  </view>
+</view>

@@ -9,11 +9,16 @@
     "pages/square/square",
     "pages/myQuestion/myQuestion",
     "pages/myReply/myReply",
-    "pages/replyMe/replyMe"
+    "pages/replyMe/replyMe",
+    "pages/answerPage/answerPage",
+    "pages/addReply/addReply",
+    "pages/addComment/addComment",
+    "pages/commentPage/commentPage",
+    "pages/searchList/searchList"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "black",
+    "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "医疗互助",
     "navigationBarTextStyle": "black"
   },
@@ -35,7 +40,6 @@
         "text": "我的",
         "iconPath": "pages/img/icon-setting.png",
         "selectedIconPath": "pages/img/icon-setting-selected.png"
-        
       }
     ]
   },

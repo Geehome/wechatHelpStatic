@@ -1,0 +1,8 @@
+
+  <view class="section">
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="在此输入你的回复" name="textarea" style="margin-top:10rpx;margin-left:10rpx;margin-right:10rpx" />
+      <button form-type="submit" style="background-color:rgb(94, 94, 228);color:white;right:10rpx;margin:0 auto;" size="mini" class="weui-btn mini-btn"> 提交 </button>
+    </form>
+
+</view>

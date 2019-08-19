@@ -12,3 +12,6 @@
     <div class="weui-cell__ft" style="font-size:10px;">{{item.atime}}</div>
   </view>
 </view>
+<view class="weui-cell" style="color:gray" bindtap="loadmore">
+点击加载更多
+</view>

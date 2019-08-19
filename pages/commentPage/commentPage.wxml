@@ -1,0 +1,25 @@
+<view>
+  <view style="padding:10rpx;box-shadow: 1px 1px 2px #888888;background-color:#fff">
+    <div style="margin-left:20rpx;font-size:30rpx;font-weight:bold;color:gray;vertical-align:middle" bindtap="close">所有评论</div>
+  </view>
+  <view style="background-color:#fff;margin-top:5rpx" wx:for="{{comments}}" wx:key="{{name}}">
+    <div class="weui-media-box weui-media-box_text">
+      <ul class="weui-media-box__info">
+        <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+          <image src="../img/icon-setting-selected.png" style="height:35rpx;width:35rpx">123</image>
+        </li>
+        <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.user.name}}</li>
+      </ul>
+      <p class="weui-media-box__desc" style="color:black; margin-left:10rpx;margin-right:10rpx">{{item.description}}</p>
+      <ul class="weui-media-box__info" >
+        <li class="weui-media-box__info__meta" style="margin-top:19rpx;margin-left:10rpx">{{item.time}}</li>
+      </ul>
+    </div>
+  </view>
+<view style="text-align:center;color:gray;margin-top:10px" bindtap="loadmore">
+  点击加载更多哦~
+</view>
+</view>
+  <view>
+  <button  class="comment weui-btn mini-btn " size="mini" bindtap="addComment" >+ 评论</button>
+  </view>

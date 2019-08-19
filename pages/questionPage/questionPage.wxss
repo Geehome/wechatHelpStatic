@@ -1,28 +1,31 @@
 /* pages/questionPage/questionPage.wxss */
-.scroller-container{
+
+.scroller-container {
   height: 1300rpx;
 }
-.top-text{
+
+.top-text {
   font-size: 24rpx;
   color: #999;
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
 
-.divLine{
- background: #D1D1D6;
- width: 100%;
- height: 2px;
- margin: 20rpx;
+.divLine {
+  background: #d1d1d6;
+  width: 100%;
+  height: 2px;
+  margin: 20rpx;
 }
 
-.content-text{
+.content-text {
   margin: 20rpx;
   font-size: 40rpx;
   font-weight: 600rpx;
   color: #333;
 }
-.image-container{
+
+.image-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -30,36 +33,77 @@
   margin: 20rpx;
 }
 
-.image-item{
+.image-item {
   width: 100%;
   height: 600rpx;
   padding-bottom: 20rpx;
 }
-.view-like{
+
+.view-like {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
   justify-content: center;
 }
-.icon-like{
+
+.icon-like {
   width: 128rpx;
   height: 128rpx;
   margin-top: 20rpx;
 }
-.type-text{
+
+.type-text {
   margin-left: 10rpx;
   font-size: 30rpx;
 }
-.url-text{
+
+.url-text {
   margin-left: 10rpx;
   font-size: 24rpx;
 }
-.type-author{
+
+.type-author {
   margin-left: 10rpx;
   font-size: 30rpx;
 }
-.type-date{
+
+.type-date {
   margin-left: 10rpx;
   font-size: 30rpx;
+}
+
+.subicon {
+  height: 20rpx;
+  width: 20rpx;
+  margin-left: 25rpx;
+}
+
+.subtext {
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  color: grey;
+}
+
+.round_button {
+  width: 70px;
+  height: 70px;
+  border: 0 solid #fff;
+  border-radius: 250px;
+  font-size: 0;
+  position: fixed;
+  margin-left: 15rpx;
+  bottom: 13rpx;
+}
+
+.subicon {
+  height: 20rpx;
+  width: 20rpx;
+  margin-left: 25rpx;
+}
+
+.subtext {
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  color: grey;
 }

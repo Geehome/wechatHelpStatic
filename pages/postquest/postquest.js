@@ -31,7 +31,7 @@ Page({
   submitForm:function(e){
     var self = this
     wx.request({
-      url: 'http://127.0.0.1:8080/postQuestion',
+      url: appInstance.globalData.serverUrl+'/postQuestion',
       data:{
         uid : this.data.id,
         description : this.data.descriptext,

@@ -22,7 +22,7 @@ Page({
           var user = app.globalData.userInfo
           console.log(user)
           wx.request({
-            url: 'http://127.0.0.1:8080/getUserOpenId',
+            url: app.globalData.serverUrl+'/getUserOpenId',
             data: {
               rescode: res.code,
               name: user.nickName,

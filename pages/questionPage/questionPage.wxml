@@ -1,54 +1,62 @@
-<view class="page" style="word-break:break-all">
-<view bindtouchstart="returnMain">
-返回主页
-</view>
-  <view class="page__hd">
+<view class="page" style="word-break:break-all;">
+  <view bindtouchstart="returnMain">
+    返回主页
+  </view>
+  <view style="background-color:#fff;margin-bottom:20rpx;">
     <view class="page__title">问题：{{title}}</view>
     <view class="page__desc">描述：{{description}}</view>
     <view>
-      <div class="page__desc" style="font-size:20rpx;">用户名：{{qNickname}} \t</div>
-      <div class="page__desc" style="font-size:20rpx;"> \t提问时间:{{asktime}}</div>
+      <image src="../img/icon-setting.png" class="subicon"></image>
+      <div class="page__desc" style="font-size:20rpx; margin-left:10rpx">{{qNickname}}</div>
+      <image src="../img/pageviews.png" class="subicon"></image>
+      <div class="page__desc" style="font-size:20rpx; margin-left:10rpx"> {{pv}}</div>
+      <image src="../img/calendar.png" class="subicon"></image>
+      <div class="page__desc" style="font-size:20rpx; margin-left:10rpx"> {{asktime}}</div>
     </view>
   </view>
 
-  <view class="page__hd" wx:if="{{status == 1}}">
-    <view class="weui-article__h3" style="color:gray;">
-      被采纳的回答
-    </view>
-    <view class="weui-article__h3">{{acptAns.desc}}</view>
-    <view>
-      <div class="page__desc" style="font-size:20rpx;">用户名：{{acptAns.author}} \t</div>
-      <div class="page__desc" style="font-size:20rpx;"> \t提问时间:{{acptAns.atime}}</div>
-    </view>
 
-
-  </view>
-  <view class="page"><view class="page__hd">
-        <view class="weui-article__h3 " style="color:gray;" >
-        所有回答：
+</view>
+<view class="page">
+  <view>
+    <view class="weui-article__h3 " style="color:gray;" wx:if="{{answers.id!=0}}">
+      所有回答：
+    </view>
+    <view class="weui-article__h3 " style="color:gray;" wx:else>
+      该问题还没有人回答哦，感觉来回答吧~
+    </view>
+    <view wx:for="{{answers}}" wx:key="{{item}}" style="background-color:#fff; margin-bottom:4rpx;" data-aid="{{item.aid}}" bindtap="navigateToAnsPage">
+      <view style=" margin-left:30rpx;margin-right:30rpx">
+        <text style="font-size:30rpx; font-weight: 400; overflow:hidden;">{{item.desc}}</text>
       </view>
-    <view wx:for="{{answers}}" wx:key="{{item}}" >
-      <view wx-if="{{item.accept == 0}}">
-      <view style="font-size:30rpx; font-weight: 400;">{{item.desc}}</view>
-        <div class="page__desc" style="font-size:20rpx;">用户名：{{item.author}} \t</div>
-        <div class="page__desc" style="font-size:20rpx;"> 回复时间:{{item.atime}}\t</div>
-        <div class="page__desc" style="font-size:20rpx; display:none;"id="aid"> 回复id:{{item.aid}}\t</div>
-        <div class="page__desc" style="font-size:20rpx; color:green" bindtap="adapt" wx-if="{{quid == id && status==0}}" id="{{item.aid}}" >采纳建议\n</div>
-      </view>
-    </view>
-    </view>
-  </view>
-
-  <view class="page__hd" wx:if="{{status==0}}">
-    <view class="weui-article__h3">请输入你的回答</view>
-    <form bindsubmit="postAnswer">
-      <div class="weui-cell__bd">
-        <textarea class="weui-textarea" placeholder="" maxlength="400" rows="3" bindinput="descrip" style="border:solid 2rpx #2f4f4f; border-radius:20rpx;"></textarea>
+      <image src="../img/comments.png" class="subicon"></image>
+      <text class="page__desc" class="subtext" style="margin-left:10rpx">{{item.ans_reply_sum}}</text>
+      <image src="../img/pageviews.png" class="subicon"></image>
+      <text class="page__desc" class="subtext" style="margin-left:10rpx">{{item.ans_pv}}</text>
+      <image src="../img/home-like.png" class="subicon"></image>
+      <text class="page__desc" class="subtext" style="margin-left:10rpx">{{item.like_sum}}</text>
+      <div style="margin-left:200">
+        <image src="../img/calendar.png" class="subicon"></image>
+        <text class="page__desc" class="subtext" style="margin-left:10rpx">{{item.atime}}</text>
       </div>
-      <button class="weui-btn" style=" width:190rpx; background-color:green; color:white;" bindtap="submitAns" wx-if="{{myAns!= empty}}">提交</button>
-    </form>
+    </view>
   </view>
 </view>
 
-<modal title="确认信息" cancel-text="取消" confirm-text="确定" hidden="{{hiddenmodal}}" bindconfirm="confirm" bindcancel="cancel" style="font-color:black">是否采纳该回答？</modal>
-<modal title="确认信息" cancel-text="取消" confirm-text="确定" hidden="{{hiddenAnsmodal}}" bindconfirm="confirmAns" bindcancel="cancelAns" style="font-color:black">是否提交我的回答？</modal>
+<button class="round_button" bindtap="addReply">
+  <image src='../img/postAnswer.jpg' style="width: 50px;height: 50px;  border-radius: 250px; align:middle"></image>
+</button>
+
+<!-- <view class="page__hd" wx:if="{{status==0}}">
+  <view class="weui-article__h3">请输入你的回答</view>
+  <form bindsubmit="postAnswer">
+    <div class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="" maxlength="400" rows="3" bindinput="descrip" style="border:solid 2rpx #2f4f4f; border-radius:20rpx;"></textarea>
+    </div>
+    <button class="weui-btn" style=" width:190rpx; background-color:green; color:white;" bindtap="submitAns" wx-if="{{myAns!= empty}}">提交</button>
+  </form> -->
+<!-- </view> -->
+
+
+<!-- <modal title="确认信息" cancel-text="取消" confirm-text="确定" hidden="{{hiddenmodal}}" bindconfirm="confirm" bindcancel="cancel" style="font-color:black">是否采纳该回答？</modal>
+<modal title="确认信息" cancel-text="取消" confirm-text="确定" hidden="{{hiddenAnsmodal}}" bindconfirm="confirmAns" bindcancel="cancelAns" style="font-color:black">是否提交我的回答？</modal> -->

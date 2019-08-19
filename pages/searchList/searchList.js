@@ -1,4 +1,4 @@
-
+// pages/searchList/searchList.js
 const app = getApp();
 Page({
 
@@ -6,67 +6,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tel: null,
-    age: null,
-    moto1: "电话号码",
-    moto2: "年龄",
-    ageNum: [],
-    index: 0,
-    id:null
-  },
-
-  telInput: function (e) {
-    this.setData({
-      tel: e.detail.value
-    })
-    console.log('电话号码的输入值：', e.detail.value)
-  },
-
-  ageInput: function (e) {
-    this.setData({
-      index: e.detail.value,
-      age: e.detail.value,
-    })
-    console.log('年龄的选择值：', e.detail.value)
+    id:app.globalData.id,
+    searchText:null,
+    questionList:null
   },
 
 
-
-  //注册账户
-  doRegist: function (e) {
-    wx.request({
-      url: app.globalData.serverUrl+'/register',
-      data: {
-        tel: this.data.tel,
-        age: this.data.age,
-        id: this.data.id
-      },
-
-      method: 'POST',
-      header: {
-        'content-type': 'application/json;charset=UTF-8'
-      },
-
-      success(v) {
-        wx.switchTab({
-          url: '../main/iblog'
-        })
-      }
+  navigateToQuestion:function(e){
+    console.log(e);
+    var self = this
+    wx.navigateTo({
+      url: '../questionPage/questionPage?qid='+e.currentTarget.dataset.qid,
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-
   onLoad: function (options) {
-    var arr = new Array(190)
-    for (var i = 0; i < 190; i++) {
-      arr[i] = i;
-    }
-    this.setData({ ageNum: arr })
-    this.setData({
-      id : options.id
+    var self = this;
+    self.setData({
+      searchText:options.searchText
+    })
+    wx.request({
+      url: app.globalData.serverUrl + '/searchQuestion',
+      data: {
+        searchText: options.searchText
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json;charset=UTF-8'
+      },
+      success(v) {
+          console.log(v);
+          self.setData({
+            questionList:v.data.searchList
+          })
+      }
     })
   },
 
@@ -118,6 +94,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-
-
 })

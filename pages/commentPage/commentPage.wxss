@@ -1,0 +1,9 @@
+/* pages/commentPage/commentPage.wxss */
+
+.comment {
+  background-color: rgb(94, 94, 228);
+  color: white;
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+}

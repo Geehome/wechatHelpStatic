@@ -1,4 +1,5 @@
-// pages/replyMe/replyMe.js
+// pages/commentPage/commentPage.js
+
 const app = getApp();
 Page({
 
@@ -6,50 +7,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: null,
-    answers: [],
+    aid: 0,
+    id: app.globalData.id,
+    comments: null,
     page: 1,
+    comments: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var self = this
-
+    var self = this;
     self.setData({
-      id: app.globalData.id
+      aid: options.aid,
     })
     wx.request({
-      url: app.globalData.serverUrl + '/myReply?uid=' + self.data.id,
+      url: app.globalData.serverUrl + '/commentPage',
       data: {
-        uid: self.data.id,
-        page: self.data.page
+        aid: self.data.aid,
+        page: self.data.page,
       },
       method: 'POST',
       header: {
         'content-type': 'application/json;charset=UTF-8'
       },
       success(v) {
-        console.log(v)
+        console.log(v);
         self.setData({
-          answers: v.data.answers
+          comments: v.data.comments
         })
       }
-
     })
-
   },
 
-  navigateTo: function(e) {
-    console.log(e)
-    var id = this.data.id;
-    var qid = e.currentTarget.dataset.qid;
+  loadmore:function(e){
+    this.onReachBottom();
+  },
+  
+  addComment:function(e){
     wx.navigateTo({
-      url: '../questionPage/questionPage?id=' + id + '&qid=' + qid,
-
+      url: '../addComment/addComment?aid='+ this.data.aid,
     })
   },
+
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -84,19 +87,17 @@ Page({
   onPullDownRefresh: function() {
 
   },
-  loadmore:function(e){
-    this.onReachBottom();
-  },
+
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
     var self = this;
-    var next = this.data.page+1;
+    var next = self.data.page + 1;
     wx.request({
-      url: app.globalData.serverUrl + '/myReply' ,
+      url: app.globalData.serverUrl + '/answerPage',
       data: {
-        uid: self.data.id,
+        aid: self.data.aid,
         page: next
       },
       method: 'POST',
@@ -105,26 +106,22 @@ Page({
       },
       success(v) {
         console.log(v)
-        var templist = self.data.answers;
-        console.log(templist);
-        if (v.data.answers != null) {
-          var templist = self.data.answers;
-          for (var i = 0; i < v.data.answers.length; i++) {
-
-            templist.push(v.data.answers[i])
+        if (v.data.comments != null) {
+          var tmp = self.comments;
+          for (var i = 0; i < v.data.comments.length; i++) {
+            tmp.append(v.data.comments[i]);
           }
           self.setData({
-            answers: templist,
-            page: next
+            comments: tmp,
+            page:next
           })
-        } else {
+        }else{
           wx.showToast({
             title: '没有更多内容了',
             icon: 'none'
           })
         }
       }
-
     })
   },
 

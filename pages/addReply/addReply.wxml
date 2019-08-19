@@ -1,0 +1,14 @@
+<view>
+  <view style="padding:10rpx;box-shadow: 1px 1px 2px #888888;background-color:#fff">
+    <div style="margin-left:20rpx;font-size:70rpx;font-weight:bold;color:gray;vertical-align:middle" bindtap="close">×</div>
+    <text style="font-size:40rpx;margin-left:40rpx;vertical-align:middle">{{qtitle}}</text>
+  </view>
+
+  <view class="section">
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="在此输入你的答案" name="textarea" style="margin-top:10rpx;margin-left:10rpx;margin-right:10rpx" />
+      <button form-type="submit" style="background-color:#0099ff;color:white;"> 提交 </button>
+    </form>
+
+  </view>
+</view>

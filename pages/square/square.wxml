@@ -2,7 +2,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
-        <image src="{{item}}" class="slide-image"  height="150" />
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
       </swiper-item>
     </block>
   </swiper>
@@ -16,16 +16,6 @@
       </button>
     </view>
   </form>
-  <view class="search-block1">
-    <block wx:if="{{result.length > 0 && resultVisi}}">
-      <block wx:for="{{result}}" wx:key="key">
-        <view class="item">
-          <image src='../img/square/search.jpg' class='soso'></image>
-          <text class="search-block"> {{item}}</text>
-        </view>
-      </block>
-    </block>
-  </view>
 
   <view class="top-Nav">
     <block wx:for="{{topNav}}" wx:key="id">
@@ -44,7 +34,7 @@
     <navigator url='../hot/hot' hover-class='none'>
       <view class="top-Nav2-item">
         <view class="top-Nav2-item-word">
-          <text>热门问题</text>
+          <text>常见问题</text>
         </view>
       </view>
     </navigator>

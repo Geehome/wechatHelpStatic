@@ -1,0 +1,7 @@
+<view wx:if="{{questionList == null}}">
+没有搜索到相应内容
+</view>
+<view wx:for="{{questionList}}" wx:key="{{qid}}" bindtap="navigateToQuestion" data-qid="{{item.qid}}">
+    <view class="page__title">问题：{{item.title}}</view>
+    <view class="page__desc">描述：{{item.description}}</view>
+</view>
